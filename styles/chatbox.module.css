@@ -1,0 +1,120 @@
+
+.floatButton{
+    width: 150px;
+    height: 50px;
+    background: linear-gradient(90deg, rgba(205,0,18,1) 0%, rgba(171,0,15,1) 0%, rgba(255,0,48,1) 100%);
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    bottom: 0px;
+    right: 50px;
+    transition: 0.5s;
+    box-shadow: 0px -2px 10px  #00000096;
+    cursor: pointer;
+}
+
+
+.closeFloatButton{
+    width: 150px;
+    height: 0px;
+    background: linear-gradient(90deg, rgba(205,0,18,1) 0%, rgba(171,0,15,1) 0%, rgba(255,0,48,1) 100%);
+    color: #fff;
+    font-size: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    bottom: 0px;
+    right: 50px;
+    transition: 0.5s;
+    box-shadow: 0px -5px 10px  #57575796;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+
+.main{
+    width: 350px;
+    height: 450px;
+    position: fixed;
+    bottom: 0px;
+    right: 50px;
+    background-color: rgb(235, 235, 235);
+    border-radius: 10px 10px 0px 0px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s;
+    box-shadow: 0px -5px 10px  #57575796;
+    transition: 1.0s;
+}
+
+
+.offmain{
+    width: 350px;
+    height: 0px;
+    position: fixed;
+    bottom: 0px;
+    right: 50px;
+    background-color: rgb(235, 235, 235);
+    border-radius: 10px 10px 0px 0px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s;
+    box-shadow: 0px -5px 10px  #57575796;
+    transition: 1.0s;
+}
+
+
+
+.head{
+    background-color: rgb(255, 255, 255);
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 0px 5px rgb(0, 0, 0);
+    z-index: 2;
+}
+
+.messageBox{
+    flex-grow: 1;
+    overflow: scroll;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    background-color: rgb(255, 255, 255);
+}
+
+.title{
+    font-size: 15px;
+    margin: 0px;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+}
+
+.inputBox{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(204, 204, 204);
+}
+
+.sendButton{
+    text-align: center;
+    background: linear-gradient(90deg, rgba(205,0,18,1) 0%, rgba(171,0,15,1) 0%, rgba(255,0,48,1) 100%);
+    cursor: pointer;
+    border-radius: 40px;
+    margin: 0px 10px;
+    padding: 10px 10px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

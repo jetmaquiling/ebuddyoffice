@@ -1,0 +1,62 @@
+.main{
+    width: 100%;
+    background-color: #fff;
+
+}
+
+.titleContainer{
+    width: 90%;
+    margin: auto;
+}
+
+.title{
+    font-size: 30px;
+    
+}
+
+
+.mainContainer{
+    width: 90%;
+    margin: auto;
+
+}
+
+.popupSection{
+    width: 40%;
+    background-color: rgb(226, 226, 226);
+    padding: 20px 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px -2px #000;
+}
+
+.descriptionContainer{
+    background-color:#fb8c00;
+    padding: 10px 20px;
+    margin: -25px -25px 0px -25px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px -2px #000;
+}
+
+
+.titleLabel{
+    font-size: 20px;
+    margin: 0px
+}
+
+.subTitle{
+    margin: 10px 0px
+}
+
+.buttonContainer{
+    display: flex;
+    justify-content: space-between
+}
+
+.button{
+    background-color:#fb8c00;
+    color: #000;
+    padding: 10px 10px;
+    border-radius: 40px;
+    box-shadow: 0px 0px 10px -3px #000;
+    cursor: pointer
+}

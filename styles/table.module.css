@@ -1,0 +1,33 @@
+.main{
+    width: 100%;
+    background-color: rgb(204, 204, 204);
+}
+
+.titleContainer{
+    width: 90%;
+    margin: auto;
+}
+E
+.title{
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.mainContainer{
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.label{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 5px 0px;
+    font-weight: 600;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 20px
+
+}

@@ -1,0 +1,38 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+fieldset{
+  display: none;
+}
+
+.MuiInputBase-root{
+  margin:  0px 0px !important;
+  font-size: 16px !important;
+  background-color: #fff !important;
+  border-radius: 30px !important;
+  padding: 10px 10px !important;
+  margin: 5px 5px !important;
+}
+
+
+.MuiFormControl-root{
+  width: 100% !important;
+}
+
+input{
+  padding:  20px;
+}
