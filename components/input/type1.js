@@ -6,7 +6,7 @@ export default function Type1({ label='Undefined',value="", field='Undefined', t
 
     
     return (
-        <div style={{margin: '20px 0px'}}>
+        <div style={{margin: '10px 0px'}}>
                 <h5 style={{fontSize: '20px', margin: "0px 10px", fontWeight: '400'}} >{label}</h5>
                 <TextField
                     multiline

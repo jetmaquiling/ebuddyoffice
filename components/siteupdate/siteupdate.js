@@ -14,6 +14,9 @@ import Type1 from '@/components/input/type1'
 import Type5 from '@/components/input/type5'
 import config from '@/config/configuration.json'
 import axios from 'axios';
+import { LinearProgress } from '@material-ui/core';
+import SaveIcon from '@material-ui/icons/Save';
+import RotateLeftIcon from '@material-ui/icons/RotateLeft';
 
 
 const initialState = {
@@ -37,8 +40,8 @@ function reducer(state, action) {
           title: action.payload.popup_title,
           link: action.payload.popup_link,
           popupImage: null,
-          popupImagePreview: action.payload.popup_image.url,
-          imageId: action.payload.popup_image.id,
+          popupImagePreview: action.payload.popup_image && action.payload.popup_image.url,
+          imageId: action.payload.popup_image && action.payload.popup_image.id,
       };
       default:
         return;
@@ -48,40 +51,37 @@ function reducer(state, action) {
 
 export default function SiteUpdate() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
-
+  const [load, setLoad] = React.useState(false)
 
   React.useEffect(() => {
-    axios.get(`${config.SERVER_URL}/csr`).then(res => {
-      console.log(res.data.popup_image.url)
-      dispatch({
-        type:"ONINIT",
-        payload: res.data
-      });
-    }).catch(error=> {
-      console.log(error)
-    })
+    onReset()
   }, [])
 
 
   const onReset = () => {
+    setLoad(true)
     axios.get(`${config.SERVER_URL}/csr`).then(res => {
       console.log(res.data.popup_image.url)
       dispatch({
         type:"ONINIT",
         payload: res.data
       });
+      setLoad(false)
     }).catch(error=> {
       console.log(error)
+      setLoad(false)
     })
   }
 
 
   const onUpdate = ()  => {
-
+    setLoad(true)
     let one = `${config.SERVER_URL}/csr`
-    let two = `${config.SERVER_URL}/upload/files/${state.imageId}`
-    let three = `${config.SERVER_URL}/upload/`
+    let two = `${config.SERVER_URL}/upload/`
+    let three = `${config.SERVER_URL}/upload/files/${state.imageId}`
 
+
+ 
     const formData = new FormData()
     formData.append('files', state.popupImage);
     formData.append('ref','CSR')
@@ -94,16 +94,22 @@ export default function SiteUpdate() {
     }
 
     const requestOne = axios.put(one,pack);
-    const requestTwo = axios.delete(two);
-    const requestThree = axios.post(three,formData);
+    const requestTwo = state.popupImage ? axios.post(two,formData) : null;
+    const requestThree = state.popupImage ? axios.delete(three) : null;
 
     axios.all([requestOne, requestTwo, requestThree]).then(axios.spread((...responses) => {
       const responseOne = responses[0]
       const responseTwo = responses[1]
       const responesThree = responses[2]
-      alert("SUCCESS IN UPDATING")
+      if(responseOne || responseTwo || responesThree){
+        alert("SUCCESS IN UPDATING")
+        onReset()
+      }
+      
     })).catch(errors => {
-       alert("ERROR IN UPDATING")
+        alert("Error IN UPDATING")
+       console.log(errors)
+       onReset()
     })
 
    
@@ -112,7 +118,7 @@ export default function SiteUpdate() {
  
 
   return (
-    <div className={styles.main}>
+    <div className={styles.main} >
 
         <div className={styles.titleContainer}>
             <h1 className={styles.title}>EBUDDY SITE UPDATE</h1>
@@ -123,17 +129,17 @@ export default function SiteUpdate() {
               <h3 className={styles.titleLabel}>PopUp On Start Up</h3>
               <p className={styles.subTitle}>I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. </p>
             </div>
-            
-            <div className={styles.form}>
+
+            <div style={{display: (load && "none")}} className={styles.form}>
                 <Type1 dispatch={dispatch} label="Title" field="title" value={state.title} placeholder="OPTIONAL"/>
                 <Type1 dispatch={dispatch} label="Link" field="link" value={state.link} placeholder="https://globalebuddy.netlify.app/info/join"/>
                 <Type5 label="Upload Image Here" type="image" field="popupImage" previewfield="popupImagePreview" dispatch={dispatch} picture={state.popupImage}  preview={state.popupImagePreview}/>
             </div>
-            <div className={styles.buttonContainer}>
-              <h3 className={styles.button} onClick={onReset}>CANCEL</h3>
-              <h3 className={styles.button} onClick={onUpdate}>SAVE</h3>
+            <div style={{display: (load && "none")}} className={styles.buttonContainer}>
+              <h3 className={styles.button} onClick={onReset}><RotateLeftIcon/>Reset</h3>
+              <h3 className={styles.button} onClick={onUpdate}><SaveIcon/>Save</h3>
             </div>
-            
+            <LinearProgress style={{display: (!load && "none")}}/>
          </div>
         
         </div>

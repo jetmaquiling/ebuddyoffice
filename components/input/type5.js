@@ -24,10 +24,7 @@ export default function Type5({ label='Undefined', field='Undefined',previewfiel
         <div className={classes.formItem} style={{textAlign:'center'}}>
             <Card>
                     <Typography variant="h6" style={{textAlign: 'center'}} >{!picture ? label : "Change Picture"}
-                    <IconButton >
-                        {
-                        picture ? 
-                        <ReplayIcon style={{fontSize:'25px'}} onClick={()=>{
+                    <IconButton onClick={()=>{
                             dispatch({
                                 type:"ONCHANGE",
                                 field:  previewfield,
@@ -38,9 +35,8 @@ export default function Type5({ label='Undefined', field='Undefined',previewfiel
                                 field:  field,
                                 payload:  null
                             });
-                        }}/> : 
-                        <HelpIcon style={{fontSize:'25px'}} />
-                        }
+                        }}>
+                        <ReplayIcon style={{fontSize:'25px'}}/>
                 
                     </IconButton>
                     </Typography>
