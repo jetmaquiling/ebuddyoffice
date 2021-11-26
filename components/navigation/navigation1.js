@@ -38,7 +38,7 @@ export default function Navigation1({setPage, page}) {
 
               <div className={page == "SITE" ? styles.buttonActive : styles.button} onClick={()=>{change("SITE")}}>
                 <WebIcon  style={{color: '#fff'}}/>
-                <h4 className={styles.buttonText}>Site Update</h4>
+                <h4 className={styles.buttonText}>Web Control Panel</h4>
               </div>
 
               <div className={page == "TASK" ? styles.buttonActive : styles.button} onClick={()=>{change("TASK")}}>

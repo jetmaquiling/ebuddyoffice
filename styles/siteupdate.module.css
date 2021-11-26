@@ -19,12 +19,13 @@
 
 
 .mainContainer{
-    width: 90%;
-    margin: auto;
-
+    margin: 50px 10px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .popupSection{
+    height: 100%;
     width: 40%;
     background-color: rgb(226, 226, 226);
     padding: 20px 20px;
@@ -34,8 +35,17 @@
 }
 
 
+
 .descriptionContainer{
     background-color:#fb8c00;
+    padding: 10px 20px;
+    margin: -25px -25px 0px -25px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px -2px #000;
+}
+
+.csrdescriptionContainer{
+    background-color:#008f30;
     padding: 10px 20px;
     margin: -25px -25px 0px -25px;
     border-radius: 5px;
@@ -64,6 +74,19 @@
 
 .button{
     background-color:#fb8c00;
+    color: #fff;
+    font-weight: 600;
+    padding: 10px 30px;
+    border-radius: 40px;
+    box-shadow: 0px 0px 10px -3px #000;
+    cursor: pointer;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.csrButton{
+    background-color:#008f30;
     color: #fff;
     font-weight: 600;
     padding: 10px 30px;

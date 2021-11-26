@@ -6,7 +6,7 @@ import styles from '@/styles/Home.module.css'
 import { socket } from '@/config/web-sockets';
 import ChatBox from '@/components/chatbox/chatBox'
 import Navigation1 from '@/components/navigation/navigation1'
-import SiteUpdate from '@/components/siteupdate/siteupdate';
+import SiteUpdate from '@/components/siteupdate/siteupdate'
 
 
 
