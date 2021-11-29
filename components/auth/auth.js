@@ -26,7 +26,7 @@ export default function Auth({setAuth, auth}) {
   return (
     <div className={styles.main} >
         <div className={styles.container}>
-            <img src='/Logo/logo.png' className={styles.logo}/>
+            <img src='/Logo/EbuddyLogoBlack.png' className={styles.logo}/>
             <div className={styles.inputBox}>
                 <h4 className={styles.label}>CSR PASSCODE</h4>
                 <input className={styles.input} />

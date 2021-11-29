@@ -8,7 +8,7 @@ import WebIcon from '@material-ui/icons/Web';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import { ToggleOff } from '@material-ui/icons';
-
+import SubjectIcon from '@material-ui/icons/Subject';
 
 
 export default function Navigation1({setPage, page}) {
@@ -19,7 +19,7 @@ export default function Navigation1({setPage, page}) {
   return (
       <div className={styles.main}>
             <div className={styles.head}>
-                <img alt="LOGO" src="/logo/logo.png" className={styles.logo}/>
+                <img alt="LOGO" src="/logo/EbuddyLogo.png" className={styles.logo}/>
                 <h4 className={styles.title}>CSR OFFICE</h4>
             </div>
             
@@ -44,6 +44,11 @@ export default function Navigation1({setPage, page}) {
               <div className={page == "TASK" ? styles.buttonActive : styles.button} onClick={()=>{change("TASK")}}>
                 <AssignmentTurnedInIcon  style={{color: '#fff'}}/>
                 <h4 className={styles.buttonText}>Task/Assignment</h4>
+              </div>
+
+              <div className={page == "CONTENT" ? styles.buttonActive : styles.button} onClick={()=>{change("CONTENT")}}>
+                <SubjectIcon  style={{color: '#fff'}}/>
+                <h4 className={styles.buttonText}>Content Link</h4>
               </div>
             
           </div>

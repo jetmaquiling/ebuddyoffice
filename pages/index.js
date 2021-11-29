@@ -7,6 +7,7 @@ import { socket } from '@/config/web-sockets';
 import ChatBox from '@/components/chatbox/chatBox'
 import Navigation1 from '@/components/navigation/navigation1'
 import SiteUpdate from '@/components/siteupdate/siteupdate'
+import Content from '@/components/redirect/content'
 
 
 
@@ -14,7 +15,7 @@ export default function Admin() {
   const [page, setPage] = React.useState("DASHBOARD");
   const [ user, setUser] = React.useState([]);
   const [ connection, setConnection] = React.useState(null);
-
+  const [message, setMessage] =  React.useState('');
 
   React.useEffect(() => {
     console.log("STARTING LOG WORK")
@@ -37,6 +38,9 @@ export default function Admin() {
         break;
       case "SITE":
         return <SiteUpdate/>
+        break;
+      case "CONTENT":
+        return <Content setMessage={setMessage}/>
         break;
       default:
         return <MainTable user={user} setConnection={setConnection} connection={connection} />
@@ -62,7 +66,7 @@ export default function Admin() {
           {activePage()}
 
         </div>
-        {connection  && <ChatBox connection={connection} setConnection={setConnection} />}
+        {connection  && <ChatBox connection={connection} setConnection={setConnection} message={message} setMessage={setMessage} />}
         
         
     </div>

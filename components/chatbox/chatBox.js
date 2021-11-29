@@ -25,10 +25,9 @@ const useStyles = makeStyles((theme) => ({
  }
 
 
-export default function ChatBox({connection, setConnection}) {
+export default function ChatBox({connection, setConnection, setMessage, message}) {
     const [open, setOpen] = React.useState(true)
     const [messages, setMessages] =  React.useState([]);
-    const [message, setMessage] =  React.useState([]);
     const classes = useStyles();
 
 

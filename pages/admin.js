@@ -9,10 +9,10 @@ import ChatBox from '@/components/chatbox/chatBox'
 
 
 
-export default function Admin() {
+export default function Admin({}) {
   const [ user, setUser] = React.useState([]);
   const [ connection, setConnection] = React.useState(null);
-
+  const [message, setMessage] =  React.useState('');
 
   React.useEffect(() => {
     console.log("STARTING LOG WORK")
@@ -46,7 +46,7 @@ export default function Admin() {
         <div className={styles.container}>
           
           <MainTable user={user} setConnection={setConnection} connection={connection} />
-          {connection  && <ChatBox connection={connection} setConnection={setConnection} />}
+          {connection  && <ChatBox connection={connection} setConnection={setConnection} message={message} setMessage={setMessage} />}
         </div>
         
         

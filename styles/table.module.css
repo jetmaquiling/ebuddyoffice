@@ -24,10 +24,10 @@ E
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin: 5px 0px;
+    margin: 2px 0px;
     font-weight: 600;
     background-color: #fff;
-    padding: 10px;
+    padding: 5px;
     border-radius: 20px
 
 }

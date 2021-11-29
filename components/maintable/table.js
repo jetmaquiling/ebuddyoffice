@@ -16,6 +16,8 @@ import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import moment from 'moment';
 import { socket } from '@/config/web-sockets';
 import InfoIcon from '@material-ui/icons/Info';
+import DirectionsIcon from '@material-ui/icons/Directions';
+
 
 const useStyles = makeStyles({
   table: {
@@ -106,9 +108,9 @@ export default function MainTable({user, setConnection, connection}) {
             <h4 className={styles.label}><FiberManualRecordIcon style={{ color: "#008000", margin: '0px 5px' }}/> Online User - The device of a person is connected to the network and is waiting for an customer service representative.</h4>
             <h4 className={styles.label}><FiberManualRecordIcon style={{ color: "#DC143C", margin: '0px 5px' }}/> Offline User - The device of a person is disconnected to the network and exited the website, usually leaves a message in the chat box.</h4>
             <h4 className={styles.label}><FiberManualRecordIcon style={{ color: "#FFA500", margin: '0px 5px' }}/> Processing User - A customer service representative is currently attending/processing to the user concern. </h4>
-            <h4 className={styles.label}><OpenInNewIcon style={{ color: "#000", margin: '0px 5px'}}/> Process User - By clicking the button, you will be redirected to the client chat box and can now attend to the client concerns.</h4>
-            <h4 className={styles.label}><DeleteIcon style={{ color: "#000", margin: '0px 5px'}}/> Delete User - By clicking the button, the client request will be deleted.</h4>
-            <h4 className={styles.label}><InfoIcon style={{ color: "#000", margin: '0px 5px'}}/> Keep the conversation positive! Listen, listen, listen! Be patient! Acknowledge the customer’s issue!</h4>
+            <h4 className={styles.label}><OpenInNewIcon style={{margin: '0px 5px'}}/> Process User - By clicking the button, you will be redirected to the client chat box and can now attend to the client concerns.</h4>
+            <h4 className={styles.label}><DeleteIcon style={{margin: '0px 5px'}}/> Delete User - By clicking the button, the client request will be deleted.</h4>
+            <h4 className={styles.label}><DirectionsIcon style={{margin: '0px 5px'}}/> Redirect User to Website - Chat REDIRECT then the url you want to redirect the user.</h4>
             
         </div>
         <div className={styles.mainContainer}>
