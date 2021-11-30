@@ -5,7 +5,7 @@ import Head from 'next/head'
 
 function MyApp({ Component, pageProps }) {
   const [auth, setAuth] = React.useState(false)
-
+  
 
   return (
     <>  

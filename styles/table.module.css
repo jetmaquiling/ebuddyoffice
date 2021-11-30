@@ -31,3 +31,16 @@ E
     border-radius: 20px
 
 }
+
+
+.buttonContainer{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px;
+}
+
+.button{
+    cursor: pointer;
+    font-size: 20px;
+    
+}

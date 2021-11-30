@@ -18,8 +18,6 @@ export default function Admin() {
   const [message, setMessage] =  React.useState('');
 
   React.useEffect(() => {
-    console.log("STARTING LOG WORK")
-    console.log(socket)
     socket.emit('admin', { msg : "TAKE 23!" }, (error) => {
       if(error) {
           setError(error)
