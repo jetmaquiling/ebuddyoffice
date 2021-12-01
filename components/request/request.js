@@ -38,28 +38,35 @@ const useStyles = makeStyles({
   }
 });
 
+
+
+
+
+
 function createData(id, status, user_id, concern , created_at,data) {
   return {id, status, user_id, concern , created_at,data};
 }
 
-
-function createSite(id, URL, title , description) {
-  return {id, URL, title , description};
+function statusProcess(status){
+  switch(status) {
+    case "PENDING":
+      return "#008000"
+      break;
+    case "ACCOMPLISHED":
+      return "#DC143C"
+      break;
+    case "PROCESSING":
+      return "#FFA500"
+      break;
+    default:
+      return "#DC143C"
+      break;
+  }
 }
-
-const important_sites = [ 
-  {URL : "https://www.youtube.com/channel/UCrCcVsRGOcJUt9P-gaF_v0w", title: 'Global Ebuddy Youtube Channel', description: 'All Live Videos, Testimonies, and Tutorials'},
-  {URL : "https://www.facebook.com/groups/1343424559352164", title: 'Global eBuddy COMMUNITY', description: 'Group for updates throughout the Community.'},
-  {URL : "https://www.facebook.com/globalebuddy", title: 'Official Facebook Page', description: 'This is our Official Facebook Page.'},
-  {URL : "https://www.facebook.com/eBuddyph", title: 'ebuddy.ph Official Page', description: 'ebuddy ecommerce facebook page'},
-  {URL : "https://beta.phb2020.com/", title: 'User Dashboard', description: 'User Dashboard'},
-]
 
 
 export default function Request({setMessage}) {
-  const [site, setSite] = React.useState([]) 
   const [ data, setData] = React.useState([]);
-  const [connect, setConnect] = React.useState();
   const [page, setPage] = React.useState(1)
   const [load, setLoad] = React.useState(false)
   const classes = useStyles();
@@ -81,11 +88,7 @@ export default function Request({setMessage}) {
             console.log("second request",err)
         }
     }
-    setSite([])
     setData([])
-    important_sites.map((d,i) => {
-      setSite(former => [...former, createSite(i , d.URL, d.title, d.description) ]);
-    })
     getBlog()
     
 
@@ -101,11 +104,7 @@ export default function Request({setMessage}) {
                 <option value="ACCOMPLISHED">ACCOMPLISHED</option>
             </select>
         </div>
-      )
-      
-        
-       
-      
+      ) 
   }
 
   
@@ -128,7 +127,7 @@ export default function Request({setMessage}) {
                   <TableCell className={classes.label} align="center">Open</TableCell>
                   <TableCell className={classes.label} align="center">User_ID</TableCell>
                   <TableCell className={classes.label} align="left">Concern</TableCell>
-                  <TableCell className={classes.label} align="center">Created At</TableCell>
+                  <TableCell className={classes.label} align="center">Created</TableCell>
                   <TableCell className={classes.label} align="center">Delete</TableCell>
                  
                 </TableRow>

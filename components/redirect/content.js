@@ -50,7 +50,7 @@ function createSite(id, URL, title , description) {
 const important_sites = [ 
   {URL : "https://www.youtube.com/channel/UCrCcVsRGOcJUt9P-gaF_v0w", title: 'Global Ebuddy Youtube Channel', description: 'All Live Videos, Testimonies, and Tutorials'},
   {URL : "https://www.facebook.com/groups/1343424559352164", title: 'Global eBuddy COMMUNITY', description: 'Group for updates throughout the Community.'},
-  {URL : "https://www.facebook.com/OfficialPHBworx", title: 'Official Facebook Page', description: 'This is our Official Facebook Page.'},
+  {URL : "https://www.facebook.com/globalebuddy", title: 'Official Facebook Page', description: 'This is our Official Facebook Page.'},
   {URL : "https://www.facebook.com/eBuddyph", title: 'ebuddy.ph Official Page', description: 'ebuddy ecommerce facebook page'},
   {URL : "https://beta.phb2020.com/", title: 'User Dashboard', description: 'User Dashboard'},
 ]
