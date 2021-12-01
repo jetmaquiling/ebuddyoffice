@@ -8,6 +8,7 @@ import ChatBox from '@/components/chatbox/chatBox'
 import Navigation1 from '@/components/navigation/navigation1'
 import SiteUpdate from '@/components/siteupdate/siteupdate'
 import Content from '@/components/redirect/content'
+import Request from '@/components/request/request'
 
 
 
@@ -39,6 +40,9 @@ export default function Admin() {
         break;
       case "CONTENT":
         return <Content setMessage={setMessage}/>
+        break;
+      case "REQUEST":
+        return <Request/>
         break;
       default:
         return <MainTable user={user} setConnection={setConnection} connection={connection} />

@@ -44,3 +44,21 @@ E
     font-size: 20px;
     
 }
+
+
+.dropdown select {
+    font-size: 15px;
+    padding: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.dropdown select:focus {
+    outline: none;
+}
+
+.dropdown option{
+    font-size: 15px;
+    cursor: pointer;
+}
+

@@ -9,7 +9,7 @@ import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import { ToggleOff } from '@material-ui/icons';
 import SubjectIcon from '@material-ui/icons/Subject';
-
+import ReceiptIcon from '@material-ui/icons/Receipt';
 
 export default function Navigation1({setPage, page}) {
    
@@ -36,6 +36,11 @@ export default function Navigation1({setPage, page}) {
                 <h4 className={styles.buttonText}>Customer Service</h4>
               </div>
 
+              <div className={page == "REQUEST" ? styles.buttonActive : styles.button} onClick={()=>{change("REQUEST")}}>
+                <ReceiptIcon  style={{color: '#fff'}}/>
+                <h4 className={styles.buttonText}>Request Forms</h4>
+              </div>
+
               <div className={page == "SITE" ? styles.buttonActive : styles.button} onClick={()=>{change("SITE")}}>
                 <WebIcon  style={{color: '#fff'}}/>
                 <h4 className={styles.buttonText}>Web Control Panel</h4>
@@ -50,6 +55,8 @@ export default function Navigation1({setPage, page}) {
                 <SubjectIcon  style={{color: '#fff'}}/>
                 <h4 className={styles.buttonText}>Content Link</h4>
               </div>
+
+            
             
           </div>
          

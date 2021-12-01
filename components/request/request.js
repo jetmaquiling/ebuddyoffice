@@ -17,7 +17,7 @@ import config from '@/config/configuration.json'
 import axios from 'axios';
 import { useRouter } from 'next/router'
 import SendIcon from '@material-ui/icons/Send';
-
+import DeleteIcon from '@material-ui/icons/Delete';
 
 
 const useStyles = makeStyles({
@@ -38,8 +38,8 @@ const useStyles = makeStyles({
   }
 });
 
-function createData(id, subject, title, updated_at,data) {
-  return {id, subject, title, updated_at, data};
+function createData(id, status, user_id, concern , created_at,data) {
+  return {id, status, user_id, concern , created_at,data};
 }
 
 
@@ -50,13 +50,13 @@ function createSite(id, URL, title , description) {
 const important_sites = [ 
   {URL : "https://www.youtube.com/channel/UCrCcVsRGOcJUt9P-gaF_v0w", title: 'Global Ebuddy Youtube Channel', description: 'All Live Videos, Testimonies, and Tutorials'},
   {URL : "https://www.facebook.com/groups/1343424559352164", title: 'Global eBuddy COMMUNITY', description: 'Group for updates throughout the Community.'},
-  {URL : "https://www.facebook.com/OfficialPHBworx", title: 'Official Facebook Page', description: 'This is our Official Facebook Page.'},
+  {URL : "https://www.facebook.com/globalebuddy", title: 'Official Facebook Page', description: 'This is our Official Facebook Page.'},
   {URL : "https://www.facebook.com/eBuddyph", title: 'ebuddy.ph Official Page', description: 'ebuddy ecommerce facebook page'},
   {URL : "https://beta.phb2020.com/", title: 'User Dashboard', description: 'User Dashboard'},
 ]
 
 
-export default function Content({setMessage}) {
+export default function Request({setMessage}) {
   const [site, setSite] = React.useState([]) 
   const [ data, setData] = React.useState([]);
   const [connect, setConnect] = React.useState();
@@ -71,10 +71,10 @@ export default function Content({setMessage}) {
     async function getBlog() { 
         try{
             setLoad(true)
-            const newdata = await axios.get(`${config.SERVER_URL}/blogs?_start=${page === 1 ? page -1: (page -1)*8}&_limit=8`);
+            const newdata = await axios.get(`${config.SERVER_URL}/form-requests?_start=${page === 1 ? page -1 : (page -1)*8}&_limit=10`);
             console.log("nEw Data",newdata.data);
             newdata.data.map((d,i) => {
-              setData(former => [...former, createData(d.id, d.subject, d.title, moment(d.created_at).fromNow(), d) ]);
+              setData(former => [...former, createData(d.id, d.status, d.user_id, d.concern, moment(d.created_at).fromNow(), d) ]);
             })
             setLoad(false)
         }catch(err){
@@ -92,58 +92,30 @@ export default function Content({setMessage}) {
   }, [page])
 
 
+  const dropdownComponent = (status) => {
+      return (
+        <div className={styles.dropdown}>
+            <select id="Status" name="Status"  value={status}>
+                <option value="PENDING">PENDING</option>
+                <option value="PROCESSING">PROCESSING</option>
+                <option value="ACCOMPLISHED">ACCOMPLISHED</option>
+            </select>
+        </div>
+      )
+      
+        
+       
+      
+  }
 
   
 
   return (
     <div className={styles.main}>
 
-        <div className={styles.titleContainer}>
-            <h1 className={styles.title}>Links</h1>       
-        </div>
-        
-          <div className={styles.mainContainer}>
-          
-          <TableContainer component={Paper}>
-            <Table className={classes.table} aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell className={classes.label} align="center">No.</TableCell>
-                  <TableCell className={classes.label} align="right">Open</TableCell>
-                  <TableCell className={classes.label} align="left">URL</TableCell>
-                  <TableCell className={classes.label} align="left">Title</TableCell>
-                  <TableCell className={classes.label} align="center">Description</TableCell>
-                  <TableCell className={classes.label} align="center">Send</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
          
-                {site.map((row) => (
-                  <TableRow key={row.clientId} style={{ backgroundColor: (row.number % 2 == 0 &&  '#fbeee4') }}>
-                  <TableCell align="center" >{row.id}</TableCell>
-                  <TableCell align="right"><OpenInNewIcon className={classes.openIcon} onClick={()=>  window.open(`${row.URL}`, '_blank')}/></TableCell>
-                  <TableCell align="left" >{row.URL}</TableCell>
-                  <TableCell align="left">{row.title}</TableCell>
-                  <TableCell align="center">{row.description}</TableCell>
-                  <TableCell align="center"><SendIcon className={classes.openIcon} onClick={()=> setMessage(`REDIRECT ${row.URL}`)}/></TableCell>
-                  
-                  </TableRow>
-                ))}
-     
-              </TableBody>
-              
-            </Table>
-          </TableContainer>
-          
-          
-        </div>
-
-
-
-      {/* ////////////////////////////////////////////////???????????????????????????????????/ */}
-
         <div className={styles.titleContainer}>
-            <h1 className={styles.title}>Articles</h1>       
+            <h1 className={styles.title}>REQUEST FORMS</h1>       
         </div>
         
           <div className={styles.mainContainer}>
@@ -152,25 +124,25 @@ export default function Content({setMessage}) {
             <Table className={classes.table} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell className={classes.label} align="center">ID No.</TableCell>
+                  <TableCell className={classes.label} align="center">Status</TableCell>
                   <TableCell className={classes.label} align="center">Open</TableCell>
-                  <TableCell className={classes.label} align="center">Subject</TableCell>
-                  <TableCell className={classes.label} align="left">Title</TableCell>
-                  <TableCell className={classes.label} align="center">Updated At</TableCell>
-                  <TableCell className={classes.label} align="center">Send</TableCell>
+                  <TableCell className={classes.label} align="center">User_ID</TableCell>
+                  <TableCell className={classes.label} align="left">Concern</TableCell>
+                  <TableCell className={classes.label} align="center">Created At</TableCell>
+                  <TableCell className={classes.label} align="center">Delete</TableCell>
+                 
                 </TableRow>
               </TableHead>
               <TableBody>
                 {!load && 
                   data.map((row) => (
                   <TableRow key={row.clientId} style={{ backgroundColor: (row.number % 2 == 0 &&  '#fbeee4') }}>
-                    <TableCell align="center" >{row.id}</TableCell>
+                    <TableCell align="center" >{dropdownComponent(row.status)}</TableCell>
                     <TableCell align="center"><OpenInNewIcon className={classes.openIcon} onClick={()=> window.open(`https://globalebuddy.com/info/article/${row.id}`, '_blank')}/></TableCell>
-                    <TableCell align="center" >{row.subject}</TableCell>
-                    <TableCell align="left">{row.title}</TableCell>
-                    <TableCell align="center">{row.updated_at}</TableCell>
-                    <TableCell align="center"><SendIcon className={classes.openIcon} onClick={()=> setMessage("REDIRECT /info/article/${row.id}")}/></TableCell>
-                    
+                    <TableCell align="center">{row.user_id}</TableCell>
+                    <TableCell align="left" >{row.concern}</TableCell>
+                    <TableCell align="center">{row.created_at}</TableCell>
+                    <TableCell align="center"><DeleteIcon className={classes.deleteIcon} onClick={()=> deleteUser(row.clientId)}/></TableCell>
                   </TableRow>
                   ))
                  }
