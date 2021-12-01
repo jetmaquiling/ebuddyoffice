@@ -19,7 +19,7 @@ export default function Navigation1({setPage, page}) {
   return (
       <div className={styles.main}>
             <div className={styles.head}>
-                <img alt="LOGO" src="/logo/EbuddyLogo.png" className={styles.logo}/>
+                <img alt="LOGO" src="/MainLogo/EbuddyLogo.png" className={styles.logo}/>
                 <h4 className={styles.title}>CSR OFFICE</h4>
             </div>
             
